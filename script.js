@@ -94,7 +94,16 @@ function containsCommonItems(arr1, arr2)
     return true;
   }
   return false;
-}
+} // O(n): time complexity.
 
 console.log(containsCommonItems(array1, array2));
 
+
+
+// Using java script inbuild function.
+
+function containsCommonItems2( arr1, arr2)
+{
+  return arr1.some(item => arr2.includes(item));
+}
+console.log(containsCommonItems2(array1, array2));
