@@ -1,3 +1,6 @@
+// Try to modelarize the code ( have differents function for different operation).
+
+
 // const nemo = ['Nemo'];
 // const everyone = ['Asim', 'Nitish', 'Aakash', 'Ankit'];
 // const large = new Array(10000).fill('Nemo');
@@ -56,11 +59,12 @@
  // 2 inputs (arrays) // no size limit
  // return true and false
  // brute force: O(n^2);
+ // O(1): space complexity.
 
  //use hash table
 
-const array1 = ['a', 'b', 'c'];
-const array2 = ['x', 'y', 'z', 'a'];
+// const array1 = ['a', 'b', 'c'];
+// const array2 = ['x', 'y', 'z', 'a'];
 
 // array1 ==> obj {
   // a: true,
@@ -71,39 +75,213 @@ const array2 = ['x', 'y', 'z', 'a'];
 
 // array2[index] === obj.properties
 
-function containsCommonItems(arr1, arr2)
-{
-  // loop through first array and create object where properties === items in the array
-  let map = {};
-  for (let i=0; i<arr1.length; i++)
-  {
-    if(!map[arr1[i]])
-    {
-      const item = arr1[i];
-      map[item] = true;
-    }
+// function containsCommonItems(arr1, arr2)
+// {
+//   // loop through first array and create object where properties === items in the array
+//   let map = {};
+//   for (let i=0; i<arr1.length; i++)
+//   {
+//     if(!map[arr1[i]])
+//     {
+//       const item = arr1[i];
+//       map[item] = true;
+//     }
+//   }
+//   console.log(map);
+
+//   //loop through second array and check if item in second array exists on created object.
+
+
+//   for(let j=0; j<arr2.length; j++)
+//   {
+//     if(map[arr2[j]])
+//     return true;
+//   }
+//   return false;
+// } // O(n): time complexity.
+//   // O(size1): Space complexity.
+// console.log(containsCommonItems(array1, array2));
+
+
+
+// // Using java script inbuild function.
+
+// function containsCommonItems2( arr1, arr2)
+// {
+//   return arr1.some(item => arr2.includes(item));
+// }
+// console.log(containsCommonItems2(array1, array2));
+
+// Naive/Brute method
+// function hasPairWithSum(arr1, sum)
+// {
+//   var len = arr1.length;
+//   for(let i=0; i<len-1; i++)
+//   {
+//     for(let j=i;j<len; j++)
+//     {
+//       if(arr1[1] + arr1[j] === sum)
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// // Better method
+// function hasPairWithSum1(arr1, sum)
+// {
+//   const mySet = new Set();
+//   const len = arr1.length;
+//   for ( let i=0; i<len; i++)
+//   {
+//     if(mySet.has(arr1[i]))
+//     {
+//       return true;
+//     }
+//     mySet.add(sum - arr1[i])
+//   }
+//   return false;
+// }
+
+
+// console.log(hasPairWithSum([1,2,3,4,5],5));
+// console.log(hasPairWithSum1([1,2,3,4,5,6,7,8],9));
+
+// Array
+
+
+// const strings = ['a', 'b', 'c', 'd']; // dynamic array. 
+// // 4*4 = 16 bytes of storage.
+
+// //push
+// strings.push('e'); // O(1), add the element at last.
+// console.log(strings);
+
+// //pop
+// strings.pop();  // O(1);
+// console.log(strings);
+
+// // Unshift
+// strings.unshift('x'); // add at the begining. O(n)
+// console.log(strings);
+
+// //splice
+// strings.splice(2,0,'Alien'); // 2- index, 0- delete item, 'Alien' add element
+// console.log(strings);
+
+
+// referance type.
+
+// var obj1 = { value: 10};
+// var obj2 = obj1;
+// var obj3 = { value: 10};
+// console.log(obj1===obj2);
+// console.log(obj1===obj3);
+
+// // context vs scope.
+
+// function context()
+// {
+//   let a = 4;
+//   console.log(this);
+// }
+// //context();
+// window.context();
+// //console.log(this === window)
+// console.log( context() === window);
+
+
+// const object1 = {
+//   a: function()
+//   {
+//     console.log(this); 
+// console.log(object1);
+
+// instantiations
+
+// class Player {
+//   constructor (name, type)
+//   {
+//     console.log('Player', this);
+//     this.name = name;
+//     this.type = type;
+//   }
+//   introduce(){
+//     console.log('Hi I am ${this.name}, I am a ${this.type}');
+//   }
+// }
+// class Wizard extends Player{
+//   constructor(name, type)
+//   {
+//     super(name, type);
+//     console.log('Wizard', this);
+//   }
+//   play()
+//   {
+//     console.log("Weeeeee I'm a ${this.type}");
+//   }
+// }
+// Wizard wizard1 = new Wizard('Asim', 'Healer');
+// Wizard wizard2 = new Wizard('Ankit', 'Dark magic');
+
+//console.log(wizard1);
+
+
+// Arrays 
+class myArray{
+  constructor(){
+    this.length = 0;
+    this.data = {};
   }
-  console.log(map);
 
-  //loop through second array and check if item in second array exists on created object.
-
-
-  for(let j=0; j<arr2.length; j++)
-  {
-    if(map[arr2[j]])
-    return true;
+  get(index){
+    return this.data[index];
   }
-  return false;
-} // O(n): time complexity.
 
-console.log(containsCommonItems(array1, array2));
+  push(item){
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
 
+  pop(){
+    const lastItem = this.data[this.length-1];
+    delete this.data[this.length-1]; // predefine delete
+    this.length--;
+    return lastItem;
+  }
 
+  delete(index){
+    const item = this.data[index];
+    this.shiftItems(index);
 
-// Using java script inbuild function.
+  }
 
-function containsCommonItems2( arr1, arr2)
-{
-  return arr1.some(item => arr2.includes(item));
+  shiftItems(index)
+  {
+    for(let i=0; i<this.length-1; i++)
+    this.data[i] = this.data[i+1];
+    delete this.data[this.length-1];
+    this.length--;
+  }
 }
-console.log(containsCommonItems2(array1, array2));
+const newArray = new myArray();
+// console.log(newArray);
+// console.log(newArray.get(0));
+// console.log(newArray.push('Hi'));
+// console.log(newArray.push('you'));
+// console.log(newArray);
+// console.log(newArray.get(0));
+// console.log(newArray.pop());
+// console.log(newArray);
+// console.log(newArray.get(0));
+
+newArray.push('Hi');
+newArray.push('you');
+newArray.push('!');
+newArray.delete(0);
+newArray.push('are');
+newArray.push('nice');
+newArray.push('person');
+newArray.delete(1);
+console.log(newArray);
