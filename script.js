@@ -227,61 +227,147 @@
 //console.log(wizard1);
 
 
-// Arrays 
-class myArray{
-  constructor(){
-    this.length = 0;
-    this.data = {};
-  }
+// // Arrays 
+// class myArray{
+//   constructor(){
+//     this.length = 0;
+//     this.data = {};
+//   }
 
-  get(index){
-    return this.data[index];
-  }
+//   get(index){
+//     return this.data[index];
+//   }
 
-  push(item){
-    this.data[this.length] = item;
-    this.length++;
-    return this.length;
-  }
+//   push(item){
+//     this.data[this.length] = item;
+//     this.length++;
+//     return this.length;
+//   }
 
-  pop(){
-    const lastItem = this.data[this.length-1];
-    delete this.data[this.length-1]; // predefine delete
-    this.length--;
-    return lastItem;
-  }
+//   pop(){
+//     const lastItem = this.data[this.length-1];
+//     delete this.data[this.length-1]; // predefine delete
+//     this.length--;
+//     return lastItem;
+//   }
 
-  delete(index){
-    const item = this.data[index];
-    this.shiftItems(index);
+//   delete(index){
+//     const item = this.data[index];
+//     this.shiftItems(index);
 
-  }
+//   }
 
-  shiftItems(index)
-  {
-    for(let i=0; i<this.length-1; i++)
-    this.data[i] = this.data[i+1];
-    delete this.data[this.length-1];
-    this.length--;
-  }
-}
-const newArray = new myArray();
+//   shiftItems(index)
+//   {
+//     for(let i=0; i<this.length-1; i++)
+//     this.data[i] = this.data[i+1];
+//     delete this.data[this.length-1];
+//     this.length--;
+//   }
+// }
+// const newArray = new myArray();
+// // console.log(newArray);
+// // console.log(newArray.get(0));
+// // console.log(newArray.push('Hi'));
+// // console.log(newArray.push('you'));
+// // console.log(newArray);
+// // console.log(newArray.get(0));
+// // console.log(newArray.pop());
+// // console.log(newArray);
+// // console.log(newArray.get(0));
+
+// newArray.push('Hi');
+// newArray.push('you');
+// newArray.push('!');
+// newArray.delete(0);
+// newArray.push('are');
+// newArray.push('nice');
+// newArray.push('person');
+// newArray.delete(1);
 // console.log(newArray);
-// console.log(newArray.get(0));
-// console.log(newArray.push('Hi'));
-// console.log(newArray.push('you'));
-// console.log(newArray);
-// console.log(newArray.get(0));
-// console.log(newArray.pop());
-// console.log(newArray);
-// console.log(newArray.get(0));
 
-newArray.push('Hi');
-newArray.push('you');
-newArray.push('!');
-newArray.delete(0);
-newArray.push('are');
-newArray.push('nice');
-newArray.push('person');
-newArray.delete(1);
-console.log(newArray);
+// reverse a string
+
+// function reverseString(str){
+//   //let a ={};
+
+//   if(!str || str.length <2 || typeof str !== 'string'){
+//     return 'Hmm that is not good.';
+//   }
+//   for(let i=str.length-1; i>=0;i--)
+//   {
+//     console.log(str[i]);
+//   }
+// }
+
+// using built-in methods
+// function reverse2(str){
+//   return str.split('').reverse().join('');
+// }
+
+// // new model styling
+// const reverse3 = str => str.split('').reverse().join('');
+
+// console.log(reverse3('Asim'));
+
+
+
+// Merge two arrays
+// function mergeSortedArrays(array1, array2){
+//   const mergedArray = [];
+//   let array1Item = array1[0];
+//   let array2Item = array2[0];
+//   let i = 1;
+//   let j = 1;
+  
+//   //We should actually move these 2 if statements to line 2 so that we do the checks before we do assignments in line 3 and 4!
+//   if(array1.length === 0) {
+//     return array2;
+//   }
+//   if(array2.length === 0) {
+//     return array1;
+//   }
+
+//   while (array1Item || array2Item){
+//    if(array2Item === undefined || array1Item < array2Item){
+//      mergedArray.push(array1Item);
+//      array1Item = array1[i];
+//      i++;
+//    }   
+//    else {
+//      mergedArray.push(array2Item);
+//      array2Item = array2[j];
+//      j++;
+//    }
+//   }
+//   return mergedArray;
+// }
+
+// console.log(mergeSortedArrays([0,3,4,31], [3,4,6,30]));
+
+
+// Hash table
+
+// let user ={
+//   age: 54,
+//   name: 'Kylie',
+//   magic: true,
+//   scream: function(){
+//     console.log('aaaahhhhhhhhh!!!!');
+//   },
+//   // intro(name, designation): function(){
+//   //   console.log('Hello I am ' + user + ' ' + designation);
+//   // }
+// }
+
+// console.log(user.age); //O(1)
+// console.log(user.name); //O(1)
+// console.log(user.scream()); //O(1)
+// user.spell = 'Abra kadara'; //O(1)
+// //user.intro('Asim', 'Software Engineer');
+// console.log(user); // O(1)
+
+
+// O(n) for lookup if collisions are there.
+
+
