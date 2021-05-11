@@ -13,6 +13,13 @@
 //   }
 // }
 
+class Node{
+  constructor(value){
+    this.value = value,
+    this.next = null;
+  }
+}
+
 class Linkedlist{
   constructor(value){
     this.head = {
@@ -36,11 +43,7 @@ class Linkedlist{
 
   prepand(value)
   {
-    this.newNode = {
-      value: value,
-      //next:this.head   // or 
-      next: null
-    }
+    this.newNode = new Node(value);
     this.newNode.next = this.head;
     this.head =  this.newNode;
     this.length++;
